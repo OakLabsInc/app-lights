@@ -1,0 +1,19 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Debug Wifi",
+        "program": "${workspaceFolder}/src/server.js",
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/oak",
+        "runtimeArgs": [
+          "src/server.js",
+        ],
+        "env":{
+          "LIGHTS_HOST":"192.168.0.66:9100",
+          "NODE_ENV":"development"
+        }
+      }
+    ]
+  }

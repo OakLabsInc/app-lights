@@ -1,0 +1,92 @@
+*
+  display block
+  box-sizing border-box
+  transform translate3d(0, 0, 0)
+  -webkit-transform-style preserve-3d
+  -webkit-backface-visibility hidden
+  -webkit-font-smoothing subpixel-antialiased
+  user-select none !important
+  touch-action none !important
+  -webkit-tap-highlight-color rgba(255, 255, 255, 0) !important
+@font-face
+  font-family 'TradeGothic'
+  src:  url(/fonts/TradeGothCond18.ttf) format('truetype')
+style 
+  display none
+
+html,body
+  height 100%
+  width 100%
+  margin 0
+  padding 0
+  font-family TradeGothic
+html
+  font-size 1em
+body
+  display flex
+  align-items center
+  justify-content center
+  background-color #fff
+  color #424242
+  .icon
+    line-height 11rem
+    font-size 10rem
+    .icon-light-up
+      color rgba(0,0,0,.5)
+
+  .md-select-menu-container
+    background #ffffff
+  [placeholder]
+    color red
+  md-content
+    background-color #ffffff
+  .md-input, md-select, md-select-value
+    border-color #dedede
+    border-width 0 0 1px
+  .spacer
+    margin 5px 0 0 0  
+    &.lg
+      margin 10px 0 0 0  
+.error
+  color red
+.hidden
+  opacity 0
+
+
+ripples
+  position absolute
+  height 100%
+  width 100%
+  top 0
+  left 0
+  pointer-events none
+  z-index 999
+
+makeRipple(size = 1em, duration = .7s, count = infinite, thickness = 2px, delay = 0s)
+  position absolute
+  width size
+  height size
+  margin-top size * -.5
+  margin-left size * -.5
+  border thickness solid rgba(#222, .7)
+  border-radius 50%
+  opacity 0
+  animation-name rippleOut
+  animation-duration duration
+  animation-timing-function ease-out
+  animation-iteration-count count
+  animation-delay delay
+  animation-fill-mode forwards
+
+.ripple
+  makeRipple(count: 1)
+
+@keyframes rippleOut
+  0%
+    transform rotate(45deg) scale(.2)
+    opacity: 0
+  50%
+    opacity 1
+  100% 
+    transform rotate(45deg) scale(2.2)
+    opacity 0

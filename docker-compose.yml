@@ -1,0 +1,17 @@
+---
+version: '3'
+services:
+  server:
+    build: .
+    image: index.docker.io/oaklabs/app-lights:latest
+    network_mode: host
+    devices:
+      - /dev/dri
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev/shm:/dev/shm
+      - ./src:/app/src
+    environment:
+      - NODE_ENV=development
+      - PLATFORM_HOST=192.168.0.66:443
+

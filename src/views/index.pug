@@ -1,0 +1,46 @@
+doctype html
+html(ng-app='wifiApp')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0')
+
+    link(href='/vendor/angular-material.min.css', rel='stylesheet', type='text/css')
+    link(href='/index.css', rel='stylesheet', type='text/css')
+    link(href='/vendor/demo.css', rel='stylesheet', type='text/css')
+
+  body(ng-controller='appController' ,  ng-click="tapped($event)", ng-mousemove="mouseMoved($event)", ng-cloak)
+    ripples
+      .ripple(ng-repeat="r in ripples", ng-style="{ top: r.y + 'px', left: r.x + 'px' }")
+    md-content(layout-padding='')
+      .icon
+        div.icon-light-up(ng-style="{color: 'rgba(' + configuration.rgb.r + ',' + configuration.rgb.g + ',' + configuration.rgb.b + ',' + whiteValue(configuration.white)  + ')'}")
+      md-divider
+      div(tablist='')
+        md-input-container(class='md-block')
+          span Red 
+            span(ng-bind="configuration.rgb.r")
+          md-slider(ng-model="configuration.rgb.r" tab-index='1' min="0" max="255")
+        md-input-container(class='md-block')
+          span Green
+            span(ng-bind="configuration.rgb.g")
+          md-slider(ng-model="configuration.rgb.g" tab-index='1' min="0" max="255")
+        md-input-container(class='md-block')
+          span Blue
+            span(ng-bind="configuration.rgb.b")
+          md-slider(ng-model="configuration.rgb.b" tab-index='1' min="0" max="255")
+        md-input-container(class='md-block')
+          span White 
+            span(ng-bind="configuration.white")
+          md-slider(ng-model="configuration.white" tab-index='1' min="0" max="255")
+        md-input-container(class='md-block')
+          span Duration ( milli-seconds )
+            span(ng-bind="configuration.duration")
+          md-slider(ng-model="configuration.duration" step="500" tab-index='1' min="0" max="10000")
+
+      md-divider
+      section(layout='row' layout-md='column' layout-align='center center' layout-wrap)
+        md-button(class='md-raised' ng-click="sendColor(configuration)") Send
+      div.spacer
+      
+
+    script(src='/index.js')

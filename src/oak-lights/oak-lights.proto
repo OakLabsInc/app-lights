@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package oak.application;
+
+// Control an Oak USB Lighting Controller.
+//
+// The 'oak-lights' module must be activated before these RPCs are
+// available.
+//
+// 'controller_id' values come from serial numbers reported by the
+// light controllers themselves.
+service OakLights {
+
+  // Lists controllers that are connected to the host
+  rpc Info (Empty) returns (OakLightsInformation) {}
+
+  // Transitions the light color over a given amount of time
+  rpc ChangeColor (ChangeColorRequest) returns (Empty) {}
+}
+
+message Empty {}
+
+message OakLightsInformation {
+  repeated OakLights controllers = 1;
+  message OakLights {
+    string controller_id = 1;
+  }
+}
+
+message ChangeColorRequest {
+  string controller_id = 1;
+
+  // The light color to transition to
+  oneof color {
+    Color rgb = 2;
+
+    // 3 or 6 digits with leading '#', e.g. "#F00", '#A05020"
+    string hex = 3;
+  }
+
+  // The brightness of the white lights at end of transition.
+  // Must be between 0 and 255 inclusive.
+  uint32 white = 4;
+
+  // The time in milliseconds for the transition to take.
+  // Must be positive. For fastest transition possible, use 1.
+  uint32 duration = 5;
+
+  // Each value must be between 0 and 255 inclusive.
+  message Color {
+    uint32 r = 1;
+    uint32 g = 2;
+    uint32 b = 3;
+  }
+}
