@@ -75,7 +75,7 @@ window.app.controller('appController', function ($log, $timeout, $scope, $http, 
     }
   }
   $scope.configuration = {
-    controllerId: "",
+    controllerId: '',
     rgb: {
       r: 0,
       g: 0,
@@ -84,7 +84,7 @@ window.app.controller('appController', function ($log, $timeout, $scope, $http, 
     white: 170,
     duration: 500
   }
-  $scope.whiteValue = function(w) {
+  $scope.whiteValue = function (w) {
     return 1 - (w / 255)
   }
   $scope.sendColor = function (configuration) {
@@ -93,9 +93,8 @@ window.app.controller('appController', function ($log, $timeout, $scope, $http, 
 
     $timeout(function () {
       oak.send('lights.change', configuration)
-
     }, 0)
   }
-  
+
   oak.ready()
 })

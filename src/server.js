@@ -40,48 +40,6 @@ app.listen(port, function () {
 app.get('/', function (req, res) {
   res.render('index')
 })
-// accept the api call from angular and return the available wifi networks
-app.get('/wifi/available', function (req, res) {
-  platform.getWifiScan(function (err, results) {
-    if (err) {
-      res.status(404).send()
-    } else {
-      res.json(results)
-    }
-  })
-})
-
-app.get('/wifi/known', function (req, res) {
-  platform.getKnownWifiNetworks(function (err, results) {
-    if (err) {
-      res.status(404).send()
-    } else {
-      res.json(results)
-    }
-  })
-})
-
-app.get('/wifi/add', function (req, res) {
-  let wifi = JSON.parse(req.query.wifi)
-  platform.addWifi(wifi, function (err, results) {
-    if (err) {
-      res.status(404).send()
-    } else {
-      res.json(results)
-    }
-  })
-})
-
-app.get('/wifi/forget', function (req, res) {
-  let ssid = req.query.ssid
-  platform.forgetWifi({ 'ssid': ssid }, function (err, results) {
-    if (err) {
-      res.status(404).send()
-    } else {
-      res.json(results)
-    }
-  })
-})
 
 async function loadWindow () {
   logger.info({
@@ -111,7 +69,6 @@ async function loadWindow () {
     ]
   })
     .on('ready', function () {
-
       platform.getLightsInfo()
 
       if (debug) {
@@ -121,7 +78,7 @@ async function loadWindow () {
     .on('log.*', function (props) {
       logger[this.event.replace('log.', '')](props)
     })
-    //change lights
+    // change lights
     .on('lights.change', function (toChange) {
       platform.changeLights(toChange)
     })

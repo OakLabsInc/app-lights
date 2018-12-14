@@ -32,15 +32,11 @@
     "angular-aria": "~1.7.5",
     "angular-material": "~1.1.10",
     "angular-messages": "~1.7.5",
-    "color": "^3.1.0",
     "express": "~4.16.3",
-    "jquery": "^3.3.1",
-    "lodash": "~4.17.10",
     "oak-tools": "~0.5.7",
     "pug": "~2.0.3",
     "quick-grpc": "^1.1.0",
-    "stylus": "~0.54.5",
-    "uuid": "~3.3.2"
+    "stylus": "~0.54.5"
   },
   "private": true
 }
