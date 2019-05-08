@@ -5,11 +5,7 @@ window.reload = function () {
 }
 
 window.app = window.angular
-  .module('wifiApp', [
-    'ngAnimate',
-    'ngMessages',
-    'ngMaterial'
-  ])
+  .module('lightsApp', [ 'ngAnimate', 'ngMessages', 'ngMaterial' ])
   .constant('os', window.os)
   .constant('oak', window.oak)
   .constant('_', window.lodash)
@@ -67,7 +63,7 @@ window.app.controller('appController', function ($log, $timeout, $scope, $http, 
       x: pageX, y: pageY, id
     })
     $timeout(function () {
-      _.remove($scope.ripples, { id })
+      lodash.remove($scope.ripples, { id })
     }, 500)
 
     if ($scope.untapped) {

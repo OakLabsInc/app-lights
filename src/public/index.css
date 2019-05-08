@@ -34,6 +34,9 @@ body {
   background-color: #fff;
   color: #424242;
 }
+body .form-container {
+  width: 40vw;
+}
 body .icon {
   line-height: 11rem;
   font-size: 10rem;

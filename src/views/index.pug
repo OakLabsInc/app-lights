@@ -1,5 +1,5 @@
 doctype html
-html(ng-app='wifiApp')
+html(ng-app='lightsApp')
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0')
@@ -11,11 +11,11 @@ html(ng-app='wifiApp')
   body(ng-controller='appController' ,  ng-click="tapped($event)", ng-mousemove="mouseMoved($event)", ng-cloak)
     ripples
       .ripple(ng-repeat="r in ripples", ng-style="{ top: r.y + 'px', left: r.x + 'px' }")
-    md-content(layout-padding='')
+    md-content(layout-padding layout="column" layout-align="center center")
       .icon
         div.icon-light-up(ng-style="{color: 'rgba(' + configuration.rgb.r + ',' + configuration.rgb.g + ',' + configuration.rgb.b + ',' + whiteValue(configuration.white)  + ')'}")
       md-divider
-      div(tablist='')
+      div.form-container
         md-input-container(class='md-block')
           span Red 
             span(ng-bind="configuration.rgb.r")
@@ -39,8 +39,13 @@ html(ng-app='wifiApp')
 
       md-divider
       section(layout='row' layout-md='column' layout-align='center center' layout-wrap)
-        md-button(class='md-raised' ng-click="sendColor(configuration)") Send
+        md-button.md-primary.md-raised(class='md-raised' ng-click="sendColor(configuration)") Send
       div.spacer
       
-
+    script(src="/vendor/lodash.js")
+    script(src="/vendor/angular.min.js")
+    script(src="/vendor/angular-animate.min.js")
+    script(src="/vendor/angular-aria.min.js")
+    script(src="/vendor/angular-messages.min.js")
+    script(src="/vendor/angular-material.min.js")
     script(src='/index.js')
