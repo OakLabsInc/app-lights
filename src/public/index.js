@@ -77,7 +77,7 @@ window.app.controller('appController', function ($log, $timeout, $scope, $http, 
       g: 0,
       b: 0
     },
-    white: 170,
+    white: 0,
     duration: 500
   }
   $scope.whiteValue = function (w) {
