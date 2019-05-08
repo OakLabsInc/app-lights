@@ -33,7 +33,6 @@
     "angular-material": "~1.1.10",
     "angular-messages": "~1.7.5",
     "express": "~4.16.3",
-    "gulp": "^3.9.1",
     "oak-tools": "~0.5.7",
     "pug": "~2.0.3",
     "quick-grpc": "^1.2.1",
